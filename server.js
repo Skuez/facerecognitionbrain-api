@@ -24,9 +24,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-/* app.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send(database.users);
-}); */
+});
 
 app.post("/signin", signin.handleSignin(db, bcrypt));
 app.post("/register", register.handleRegister(db, bcrypt));
@@ -34,6 +34,6 @@ app.get("/profile/:id", profile.handleGetProfile(db));
 app.put("/image", image.handleImage(db));
 app.post("/imageurl", image.handleApiCall);
 
-app.listen(3000, () => {
-  console.log("app is running on port 3000");
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`app is running on port ${process.env.PORT}`);
 });
