@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 var cors = require("cors");
 const knex = require("knex");
-const bodyParser = require("body-parser");
+/* const bodyParser = require("body-parser"); */
 /* const { response } = require("express"); */
 
 const register = require("./controllers/register");
@@ -23,8 +23,8 @@ const db = knex({
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
-/* app.use(express.json()); */
+/* app.use(bodyParser.json()); */
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("it is working");
